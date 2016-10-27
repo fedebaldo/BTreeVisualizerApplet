@@ -9,7 +9,7 @@ To compile from bash:
 
 - cd src 
 - javac b_trees_visualizer/graphic_interface/Applet.java
-- appletviewer applet.html 
+- appletviewer src/applet.html 
 
 In this moment the applet is still in development phase
 
