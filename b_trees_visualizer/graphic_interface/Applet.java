@@ -35,8 +35,8 @@ public void init() {
      /* exercise panel */
     JPanel card2 = new JPanel ();
 
-    tab.addTab("EXERCISE",card1);
-    tab.addTab("EXAMPLE", card2);
+    tab.addTab("Exercise",card1);
+    tab.addTab("Example", card2);
 
     f.add(tab);
     f.pack();

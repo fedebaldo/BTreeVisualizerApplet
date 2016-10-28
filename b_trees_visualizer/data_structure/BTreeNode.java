@@ -6,6 +6,7 @@ import b_trees_visualizer.graphic_interface.Applet;
 import b_trees_visualizer.graphic_interface.utility.Pair;
 
 public class BTreeNode<E extends Comparable<? super E>> {
+
 	private int numberOfElements;
 
 	private ArrayList<E> data;
@@ -17,6 +18,9 @@ public class BTreeNode<E extends Comparable<? super E>> {
 	private boolean leaf;
 	private boolean hasFocus;
 
+	/**
+	** EFFECT produce a Node for BTree
+	**/
 	public BTreeNode() {
 		numberOfElements = 0;
 
@@ -30,7 +34,9 @@ public class BTreeNode<E extends Comparable<? super E>> {
 		hasFocus = false;
 	}
 
-	// Returns a copy of the node
+	/**
+	** @return the copy of this
+	**/
 	public BTreeNode<E> cloneNode() {
 		BTreeNode<E> clonedNode = new BTreeNode<E>();
 		clonedNode.setNumberOfElements(numberOfElements);
@@ -48,12 +54,18 @@ public class BTreeNode<E extends Comparable<? super E>> {
 		return clonedNode;
 	}
 
-// GENERAL METHODS
-
+	/**
+	** @return true if the this is a leaf
+	** false otherwise
+	**/
 	public boolean isLeaf() {
 		return leaf;
 	}
 
+	/**
+	** @param leaf boolean
+	** EFFECT set the value this.leaf = leaf
+	**/
 	protected void setLeaf(boolean leaf) {
 		this.leaf = leaf;
 	}
@@ -66,59 +78,100 @@ public class BTreeNode<E extends Comparable<? super E>> {
 		this.hasFocus = hasFocus;
 	}
 
+	/**
+	** @return the number of elements in this
+	**/
 	public int getNumberOfElements() {
 		return numberOfElements;
 	}
 
+	/**
+	** @param numberOfElements an integer
+	** EFFECT set this.numberOfElements = numberOfElements
+	**/
 	protected void setNumberOfElements(int numberOfElements) {
 		this.numberOfElements = numberOfElements;
 	}
 
-	// Methods to manage the arraylist recentModifications
+	/**
+	** @return true if this was recently modified
+	**/
 	public boolean isRecentlyModified() {
 		return !recentModifications.isEmpty();
 	}
 
+	/**
+	** @param i : integer
+	** @return the Pair containing the recent modification in i
+	**/
 	public Pair<Boolean, E> getModification(int index) {
 		return recentModifications.get(index);
 	}
 
+	/**
+	** @return all the recentModifications
+	**/
 	public ArrayList<Pair<Boolean, E>> getModifications() {
 		return recentModifications;
 	}
 
+	/**
+	** @param modifications : ArrayList
+	** EFFECT set a new ArrayList of recentModifications
+	**/
 	public void setRecentModifications(ArrayList<?> modifications) {
 		recentModifications.clear();
 		recentModifications.addAll((ArrayList<Pair<Boolean, E>>)modifications);
 	}
 
+	/**
+	** @param modification a Pair representing the modification
+	** EFFECT add a modification the recentModifications
+	**/
 	public void addModification(Pair<Boolean, E> modification) {
 		recentModifications.add(modification);
 	}
 
+	/**
+	** EFFECT remove all the recentModifications
+	**/
 	public void removeModifications() {
 		recentModifications.clear();
 	}
 
-	// Methods to manage the arraylist previousModifications
+	/**
+	** @return true if this was previously modified
+	**/
 	public boolean isPreviouslyModified() {
 		return !previousModifications.isEmpty();
 	}
 
+	/**
+	** @return all the previousModifications
+	**/
 	public ArrayList<Pair<Boolean, E>> getPreviousModifications() {
 		return previousModifications;
 	}
 
+	/**
+	** @param modifications : ArrayList
+	** EFFECT set a new ArrayList of previousModifications
+	**/
 	public void setPreviouslyModified(ArrayList<?> modifications) {
 		previousModifications.clear();
 		previousModifications.addAll((ArrayList<Pair<Boolean, E>>)modifications);
 	}
 
+	/**
+	** EFFECT remove all the previousModifications
+	**/
 	public void removePreviousModifications() {
 		previousModifications.clear();
 	}
 
-	//Gets all the keys that have been added to the node recently or previously
+	/**
+	** @return all the keys added previously or recently to this
+	**/
 	public ArrayList<E> getAddedKeys() {
 		ArrayList<E> add = new ArrayList<E>();
 		if (!recentModifications.isEmpty()) {
@@ -137,7 +190,9 @@ public class BTreeNode<E extends Comparable<? super E>> {
 		return add;
 	}
 
-	// Checks if any of the modifications is a removal
+	/**
+	** @return true if there's at least one modification that is a remove
+	**/
 	public boolean hasRemovedKeys() {
 		if (!recentModifications.isEmpty()) {
 			for (Pair<Boolean, E> p : recentModifications) {
@@ -155,15 +210,28 @@ public class BTreeNode<E extends Comparable<? super E>> {
 		return false;
 	}
 
-//DATA
+	/**
+	** @return the ArrayList containig the keys in this
+	**/
 	protected ArrayList<E> getData() {
 		return data;
 	}
 
+	/**
+	** @param index : integer
+	** @return the element index in data,
+	** the key in position index in this.
+	**/
 	public E getKey(int index) {
 		return data.get(index);
 	}
 
+	/**
+	** @param index an integer
+	** @param key, an object E the same of BTreeNode<E>
+	** @param trackSteps a boolean
+	** EFFECT set the key in position index in this
+	**/
 	public void setKey(int index, E key, boolean trackSteps) {
 		if (trackSteps) {
 			addModification(new Pair<Boolean, E>(false, getKey(index)));
@@ -173,12 +241,22 @@ public class BTreeNode<E extends Comparable<? super E>> {
 		data.set(index, key);
 	}
 
+	/**
+	** @param data2, an ArrayList of element E, the same type
+	** of the object in BTreeNode
+	** EFFECT appends data2 to this.data
+	**/
 	public void mergeData(ArrayList<E> data2) {
 		data.addAll(data2);
 		numberOfElements += data2.size();
 	}
 
-	//Adds a key to the node keeping an increasing order
+	/**
+	** @param key, an object of type E the same of the element in
+	** BTreeNode
+	** @param trackSteps a boolean
+	** EFFECT add key in this preserving the order
+	**/
 	public void addKey(E key, boolean trackSteps) {
 		int index = 0;
 		while (index < numberOfElements && getKey(index).compareTo(key) < 0) {
@@ -192,6 +270,11 @@ public class BTreeNode<E extends Comparable<? super E>> {
 		}
 	}
 
+	/**
+	** @param index an integer
+	** @param trackSteps a boolean
+	** @return the key in position index in this
+	**/
 	public E extractKey(int index, boolean trackSteps) {
 		E e = data.remove(index);
 		if (!e.equals(null)) {
@@ -204,6 +287,10 @@ public class BTreeNode<E extends Comparable<? super E>> {
 		return e;
 	}
 
+	/**
+	** @param trackSteps a boolean
+	** @return the last key in this
+	**/
 	public E extractLastKey(boolean trackSteps) {
 		return extractKey(numberOfElements - 1, trackSteps);
 	}

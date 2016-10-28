@@ -71,19 +71,19 @@ public class ManagerPanel extends JPanel {
 		this.add(remPa, c);
 
 		c.weightx = 0.5f;
-		c.gridx = 3;
+		c.gridx = 4;
 		c.gridy = 0;
 		this.add(clearB, c);
 
+		c.gridx = 3;
+		c.gridy = 0;
+		this.add(npPanel,c);
+
 		c.weightx = 1;
-		c.gridx = 4;
+		c.gridx = 5;
 		c.gridy = 0;
 		c.gridwidth = 1;
 		this.add(zoom, c);
-
-		c.gridx = 5;
-		c.gridy = 0;
-		this.add(npPanel,c);
 	}
 
 }
