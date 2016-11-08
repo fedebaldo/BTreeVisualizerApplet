@@ -133,14 +133,17 @@ public class BTreePanelMaker<E extends Comparable<? super E>> {
 				}
 
 				container.add(temp, c);
+
 			}
 			// for the last child the 10px space is removed
 			c.insets = new Insets(treeSpacing, 0, 0, 0);
 			c.gridx = numberOfElements;
 			c.gridy = 1;
 			container.add(BTreePanelMaker.makePanelFromRoot(root.getChild(numberOfElements), treeGrade, showChanges, keepPrevious), c);
+			
 		}
 
 		return container;
+
 	}
 }

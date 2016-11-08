@@ -35,6 +35,26 @@ public class BTreeNode<E extends Comparable<? super E>> {
 	}
 
 	/**
+	** @param data : an ArrayList of integer representing the keys
+	** EFFECT create a BTree node with the data in the same order
+	** they are presented in data
+	**/
+	public BTreeNode (ArrayList<E> data) {
+
+		this.numberOfElements = data.size();
+
+		this.data = data;
+		this.children = new ArrayList<BTreeNode<E>>(this.data.size());
+
+		recentModifications = new ArrayList<Pair<Boolean, E>>();
+		previousModifications = new ArrayList<Pair<Boolean, E>>();
+
+		leaf = true;
+		hasFocus = false;
+
+	}
+
+	/**
 	** @return the copy of this
 	**/
 	public BTreeNode<E> cloneNode() {
@@ -317,6 +337,18 @@ public class BTreeNode<E extends Comparable<? super E>> {
 		} catch (NullPointerException e) {
 			System.err.println("The node given as child is null");
 		}
+	}
+	/**
+	** @param i : integer
+	** @param data : an ArrayList of integer representing the data of the child
+	** EFFECT add the child in position i in this.children
+	**/
+	public void addChild (int i, ArrayList<E> data) {
+
+		BTreeNode child = new BTreeNode (data);
+		child.setLeaf(true);
+
+		this.children.set(i, child);
 	}
 
 	public BTreeNode<E> extractChild(int index) {

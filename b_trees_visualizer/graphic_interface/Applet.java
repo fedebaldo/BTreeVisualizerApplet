@@ -7,6 +7,8 @@ import b_trees_visualizer.data_structure.BTree;
 import b_trees_visualizer.graphic_interface.custom_panels.BTreeScrollPanel;
 import b_trees_visualizer.graphic_interface.custom_panels.ManagerPanel;
 import b_trees_visualizer.graphic_interface.custom_panels.StepsPanel;
+import b_trees_visualizer.graphic_interface.custom_panels.ExercisePanel;
+
 
 public class Applet extends JApplet {
 
@@ -33,10 +35,11 @@ public void init() {
     card1.add(pan, BorderLayout.CENTER);
     card1.add(man, BorderLayout.NORTH);
      /* exercise panel */
-    JPanel card2 = new JPanel ();
+    ExercisePanel exPanel = new ExercisePanel();
+    JPanel card2 = exPanel.getPane();
 
-    tab.addTab("Exercise",card1);
-    tab.addTab("Example", card2);
+    tab.addTab("Example",card1);
+    tab.addTab("Exercise", card2);
 
     f.add(tab);
     f.pack();

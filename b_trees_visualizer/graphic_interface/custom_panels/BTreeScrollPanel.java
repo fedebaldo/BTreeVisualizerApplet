@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.JPanel;
@@ -18,6 +19,8 @@ public class BTreeScrollPanel extends JScrollPane {
 	private BTree<?> tree;
 	private BTree<?> visualizedTree;
 	private JPanel background;
+	private int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
+	private int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
 
 	public BTreeScrollPanel(BTree<?> tree) {
 		super();
@@ -44,8 +47,34 @@ public class BTreeScrollPanel extends JScrollPane {
 		this.getHorizontalScrollBar().setUnitIncrement(15);
 		this.getVerticalScrollBar().setUnitIncrement(15);
 
-		this.setPreferredSize(new Dimension(screenWidth * 2/3, screenHeight * 2/3));
+		this.setPreferredSize(new Dimension(this.screenWidth, this.screenHeight));
 	}
+
+	public BTreeScrollPanel(BTree<?> tree, Dimension dim) {
+		super();
+		// The differentiation between visualizedTree and tree is in order to freely switch
+		// between the tree states in the steps visualization
+
+		this.tree = tree;
+		this.visualizedTree = this.tree;
+		// Panel to give a solid colour to the tree background
+		background = new JPanel();
+		background.setBackground(Color.white);
+		// Set layout to GridBagLayout so that panel gets centred
+		background.setLayout(new GridBagLayout());
+
+		// Set the content panel of the JScrollPane to background
+		this.setViewportView(background);
+		// Set scrollbars behaviour
+		this.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		this.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		this.getHorizontalScrollBar().setUnitIncrement(15);
+		this.getVerticalScrollBar().setUnitIncrement(15);
+
+		this.setPreferredSize(dim);
+
+	}
+
 
 	// Updates the B-Tree's panel by removing the previous one from the background panel
 	// and then re-adding the freshly made one
@@ -57,7 +86,7 @@ public class BTreeScrollPanel extends JScrollPane {
 		this.setViewportView(background);
 		repaint();
 	}
-	
+
 	/** Code Used by Donato Davide to fill the starting BTree
 	public void autoFill(int rangeMin, int rangeMax) {
 		int random = 50000;

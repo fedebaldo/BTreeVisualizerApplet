@@ -27,7 +27,6 @@ public class NextListener implements ActionListener {
 
     tree.next();
     treePanel.updateTreePanel(true, false);
-    treePanel.repaint();
 
   }
 }

@@ -44,6 +44,16 @@ public class BTree<E extends Comparable<? super E>> {
 	}
 
 	/**
+	** @param data: an ArrayList of integer reprensenting the keys
+	** of the root
+	**/
+	public BTree (ArrayList<E> data) {
+
+		this.root = new BTreeNode<E> (data);
+
+	}
+
+	/**
 	** EFFECT produce this with the insertion
 	** of a random integer in [0,999]
 	**/
