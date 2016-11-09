@@ -1,14 +1,17 @@
 package b_trees_visualizer.graphic_interface.custom_panels;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.JPanel;
+import javax.swing.JButton;
 import javax.swing.JScrollPane;
 
 import b_trees_visualizer.data_structure.BTree;
@@ -19,6 +22,7 @@ public class BTreeScrollPanel extends JScrollPane {
 	private BTree<?> tree;
 	private BTree<?> visualizedTree;
 	private JPanel background;
+	private GridBagConstraints c;
 	private int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
 	private int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
 
@@ -62,6 +66,7 @@ public class BTreeScrollPanel extends JScrollPane {
 		background.setBackground(Color.white);
 		// Set layout to GridBagLayout so that panel gets centred
 		background.setLayout(new GridBagLayout());
+		c = new GridBagConstraints();
 
 		// Set the content panel of the JScrollPane to background
 		this.setViewportView(background);
@@ -82,9 +87,11 @@ public class BTreeScrollPanel extends JScrollPane {
 		if (background.getComponentCount() > 0) {
 			background.remove(0);
 		}
-		background.add(BTreePanelMaker.makePanelFromTree(visualizedTree, showChanges, keepPrevious));
+		background.add(BTreePanelMaker.makePanelFromTree(visualizedTree, showChanges, keepPrevious),c);
 		this.setViewportView(background);
 		repaint();
+
+		System.out.println(this.visualizedTree.getRoot().getNumberOfLeaf());
 	}
 
 	/** Code Used by Donato Davide to fill the starting BTree
@@ -104,6 +111,22 @@ public class BTreeScrollPanel extends JScrollPane {
 		visualizedTree = tempTree;
 		updateTreePanel(showChanges, keepPrevious);
 	}
+/**
+	public void setChildrenButton () {
+
+			int n_c = background.getComponentCount();
+			Syste.out.println(n_c);
+			for (int i = n_c; i >= n_c - n_l; i--) {
+
+				BTreeContainerJPanel c = this.background.getComponent(0);
+
+			}
+			BTreeContainerJPanel c = this.background.getComponent(0);
+
+
+	}
+
+**/
 
 	public void defaultTree() {
 		visualizedTree = tree;

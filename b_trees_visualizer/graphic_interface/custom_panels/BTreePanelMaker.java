@@ -140,7 +140,7 @@ public class BTreePanelMaker<E extends Comparable<? super E>> {
 			c.gridx = numberOfElements;
 			c.gridy = 1;
 			container.add(BTreePanelMaker.makePanelFromRoot(root.getChild(numberOfElements), treeGrade, showChanges, keepPrevious), c);
-			
+
 		}
 
 		return container;

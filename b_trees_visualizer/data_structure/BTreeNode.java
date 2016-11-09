@@ -9,6 +9,7 @@ public class BTreeNode<E extends Comparable<? super E>> {
 
 	private int numberOfElements;
 
+
 	private ArrayList<E> data;
 	private ArrayList<BTreeNode<E>> children;
 
@@ -72,6 +73,27 @@ public class BTreeNode<E extends Comparable<? super E>> {
 		clonedNode.setLeaf(leaf);
 		clonedNode.setFocus(hasFocus);
 		return clonedNode;
+	}
+
+	public int getNumberOfLeaf () {
+
+		int numberOfLeaf = 0;
+
+		if (this.isLeaf()) {
+
+			return this.numberOfElements;
+
+		} else {
+
+			for (BTreeNode<E> n : this.children) {
+
+				numberOfLeaf += n.getNumberOfLeaf ();
+
+			}
+
+			return numberOfLeaf;
+
+		}
 	}
 
 	/**
