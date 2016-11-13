@@ -4,8 +4,12 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
+<<<<<<< HEAD
+import javax.swing.*;
+=======
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+>>>>>>> c58f2ac914e50ffa9c7c569ea6dc7f54806883c7
 
 public class BTreeContainerJPanel extends JPanel {
 
@@ -75,7 +79,11 @@ public class BTreeContainerJPanel extends JPanel {
 			 * label in the middle is taken as centred position, otherwise it gets the same label position
 			 * but it also adds half of the width of the single label.
 			 */
+<<<<<<< HEAD
+			JComponent tempEl = (JComponent)tempData.getComponent((int)(tempData.getComponentCount() / 2));
+=======
 			JLabel tempEl = (JLabel)tempData.getComponent((int)(tempData.getComponentCount() / 2));
+>>>>>>> c58f2ac914e50ffa9c7c569ea6dc7f54806883c7
 			int x2 = temp.getX() + tempData.getX();
 			if (tempData.getComponentCount() % 2 == 0) {
 				x2 += tempEl.getX();

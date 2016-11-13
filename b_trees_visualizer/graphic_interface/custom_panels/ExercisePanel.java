@@ -1,9 +1,15 @@
 package b_trees_visualizer.graphic_interface.custom_panels;
 
 import b_trees_visualizer.graphic_interface.custom_panels.BTreeScrollPanel;
+<<<<<<< HEAD
+import b_trees_visualizer.graphic_interface.custom_panels.NewExercisePanel;
+import b_trees_visualizer.graphic_interface.custom_panels.DrawPanel;
+import b_trees_visualizer.data_structure.BTree;
+=======
 import b_trees_visualizer.data_structure.BTree;
 import b_trees_visualizer.graphic_interface.listeners.DrawerListener;
 import b_trees_visualizer.graphic_interface.listeners.ExerciseListener;
+>>>>>>> c58f2ac914e50ffa9c7c569ea6dc7f54806883c7
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,6 +30,15 @@ public class ExercisePanel {
 
   public ExercisePanel () {
 
+<<<<<<< HEAD
+    NewExercisePanel exercisePanel = new NewExercisePanel ();
+
+    DrawPanel drawPanel = new DrawPanel ();
+
+    this.card = new JPanel (new BorderLayout());
+    this.card.add(exercisePanel, BorderLayout.WEST);
+    this.card.add(drawPanel, BorderLayout.EAST);
+=======
     /* big panel containig exercise*/
     this.exPan = new JPanel (new BorderLayout());
     this.exPan.setPreferredSize(new Dimension (this.screenWidth*16/33, this.screenHeight));
@@ -79,6 +94,7 @@ public class ExercisePanel {
     this.card = new JPanel (new BorderLayout());
     this.card.add(exPan, BorderLayout.WEST);
     this.card.add(drawPan, BorderLayout.EAST);
+>>>>>>> c58f2ac914e50ffa9c7c569ea6dc7f54806883c7
   }
 
   public JPanel getPane() {return this.card;}

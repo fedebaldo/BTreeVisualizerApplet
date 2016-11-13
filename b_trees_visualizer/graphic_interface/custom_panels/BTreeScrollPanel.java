@@ -87,11 +87,19 @@ public class BTreeScrollPanel extends JScrollPane {
 		if (background.getComponentCount() > 0) {
 			background.remove(0);
 		}
+<<<<<<< HEAD
+		background.add(BTreePanelMaker.makePanelFromTree(visualizedTree, showChanges, keepPrevious,this),c);
+		this.setViewportView(background);
+		repaint();
+
+		//System.out.println(this.visualizedTree.getRoot().getNumberOfLeaf());
+=======
 		background.add(BTreePanelMaker.makePanelFromTree(visualizedTree, showChanges, keepPrevious),c);
 		this.setViewportView(background);
 		repaint();
 
 		System.out.println(this.visualizedTree.getRoot().getNumberOfLeaf());
+>>>>>>> c58f2ac914e50ffa9c7c569ea6dc7f54806883c7
 	}
 
 	/** Code Used by Donato Davide to fill the starting BTree
@@ -128,6 +136,11 @@ public class BTreeScrollPanel extends JScrollPane {
 
 **/
 
+<<<<<<< HEAD
+	public BTree<?> getTree () {return this.visualizedTree;}
+
+=======
+>>>>>>> c58f2ac914e50ffa9c7c569ea6dc7f54806883c7
 	public void defaultTree() {
 		visualizedTree = tree;
 		updateTreePanel(true, false);
