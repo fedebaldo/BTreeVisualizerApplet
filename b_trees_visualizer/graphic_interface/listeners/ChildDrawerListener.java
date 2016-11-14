@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class ChildDrawerListener implements ActionListener {
 
-  private BTree<Integer> tree;
+  public BTree<Integer> tree;
   private BTreeScrollPanel treePanel;
   private ArrayList<Integer> data;
   private ArrayList<Integer> path;
@@ -36,10 +36,6 @@ public class ChildDrawerListener implements ActionListener {
     String keys;
     keys = JOptionPane.showInputDialog("Please insert the keys for the selected child");
     this.data = Tools.parse(keys);
-
-    for (int i = 0; i < this.path.size(); i++) {
-      System.out.println(this.path.get(i));
-    }
 
     findAndAdd ();
 

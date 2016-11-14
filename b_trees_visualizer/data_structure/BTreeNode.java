@@ -45,15 +45,13 @@ public class BTreeNode<E extends Comparable<? super E>> {
 		this.numberOfElements = data.size();
 
 		this.data = data;
-<<<<<<< HEAD
+
 		this.children = new ArrayList<BTreeNode<E>>(this.data.size()+1);
 
 		for (int i = 0; i <= this.data.size(); i++) {
 			this.children.add(null);
 		}
-=======
-		this.children = new ArrayList<BTreeNode<E>>(this.data.size());
->>>>>>> c58f2ac914e50ffa9c7c569ea6dc7f54806883c7
+
 
 		recentModifications = new ArrayList<Pair<Boolean, E>>();
 		previousModifications = new ArrayList<Pair<Boolean, E>>();
@@ -116,11 +114,9 @@ public class BTreeNode<E extends Comparable<? super E>> {
 	** @param leaf boolean
 	** EFFECT set the value this.leaf = leaf
 	**/
-<<<<<<< HEAD
+
 	public void setLeaf(boolean leaf) {
-=======
-	protected void setLeaf(boolean leaf) {
->>>>>>> c58f2ac914e50ffa9c7c569ea6dc7f54806883c7
+
 		this.leaf = leaf;
 	}
 
@@ -267,11 +263,8 @@ public class BTreeNode<E extends Comparable<? super E>> {
 	/**
 	** @return the ArrayList containig the keys in this
 	**/
-<<<<<<< HEAD
 	public ArrayList<E> getData() {
-=======
-	protected ArrayList<E> getData() {
->>>>>>> c58f2ac914e50ffa9c7c569ea6dc7f54806883c7
+
 		return data;
 	}
 
@@ -384,16 +377,14 @@ public class BTreeNode<E extends Comparable<? super E>> {
 	public void addChild (int i, ArrayList<E> data) {
 
 		BTreeNode child = new BTreeNode (data);
-<<<<<<< HEAD
+
 		this.leaf = false;
 		child.setLeaf(false);
 
 		for (int j = 0; j <= this.data.size(); j++) {
 			this.children.add(null);
 		}
-=======
-		child.setLeaf(true);
->>>>>>> c58f2ac914e50ffa9c7c569ea6dc7f54806883c7
+
 
 		this.children.set(i, child);
 	}
@@ -406,11 +397,8 @@ public class BTreeNode<E extends Comparable<? super E>> {
 		return children.remove(children.size() - 1);
 	}
 
-<<<<<<< HEAD
+
 	public ArrayList<BTreeNode<E>> getChildren() {
-=======
-	protected ArrayList<BTreeNode<E>> getChildren() {
->>>>>>> c58f2ac914e50ffa9c7c569ea6dc7f54806883c7
 		return children;
 	}
 
@@ -821,4 +809,16 @@ public class BTreeNode<E extends Comparable<? super E>> {
 			}
 		}
 	}
+
+	/**
+	** @return true if all the children of the current node are null
+	**/
+	public boolean allNullChildren () {
+
+		for (BTreeNode<E> child : this.children) {
+			if (child != null) {return false;}
+		}
+		return true;
+	}
+
 }

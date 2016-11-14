@@ -12,63 +12,36 @@ public class Tools {
 
   public static boolean checkBTrees (BTree<Integer> tree1, BTree<Integer> tree2) {
 
-    return checkBTreesFromRoot (tree1.getRoot(), tree2.getRoot(), tree1.getGrade());
+    return checkBTreesFromRoot (tree1.getRoot(), tree2.getRoot());
 
   }
 
-  private static boolean checkBTreesFromRoot (BTreeNode<Integer> root1, BTreeNode<Integer> root2, int grade) {
+  private static boolean checkBTreesFromRoot (BTreeNode<Integer> root1, BTreeNode<Integer> root2) {
+
+    boolean correct = true;
+
+    if (root2 == null) {return false;}
 
     if (root1.isLeaf()) {
 
-      if (!root2.isLeaf())
-
-        JOptionPane.showMessageDialog(new JFrame(), "The drawed tree is uncorrect");
+      if (root2.allNullChildren()) {
+        return root1.equals(root2);
+      } else {
         return false;
+      }
 
     } else {
 
-      if (root2.isLeaf()) {
+      for (int i = 0; i < root1.getChildren().size(); i++) {
 
-        JOptionPane.showMessageDialog(new JFrame(), "The drawed tree is uncorrect");
-        return false;
-
-      }
-
-      if (root2.getData().size() > grade*2+1 ||
-          root2.getData().size() < grade-1) {
-
-            JOptionPane.showMessageDialog(new JFrame(), "The grade of the tree is " + grade + ": each node has at least "
-                                                        + (grade-1) + " and at most " + (2*grade+1) + " keys" );
-            return false;
-
-      }
-
-      if (root1.getData().size() != root2.getData().size()) {
-
-            JOptionPane.showMessageDialog(new JFrame(), "The drawed tree is uncorrect");
-            return false;
-
-      }
-
-      for (Integer x : root1.getData()) {
-        for (Integer y : root2.getData()) {
-
-          if (x!=y) {
-            JOptionPane.showMessageDialog(new JFrame(), "The drawed tree is uncorrect");
-            return false;
-          }
-
-        }
-      }
-
-      int i=0;
-      while (i < root1.getChildren().size()) {
-        if (!checkBTreesFromRoot(root1.getChild(i), root2.getChild(i), grade)){
+        if (!(correct = correct && checkBTreesFromRoot(root1.getChild(i), root2.getChild(i)))) {
           return false;
         }
+
       }
-      return true;
     }
+    System.out.println("fine " + correct);
+    return correct;
   }
 
   public static ArrayList<Integer> parse (String keys) {

@@ -17,5 +17,7 @@ the tree you are drawing. The keys must be integers and  divided by commas.
 For Example
 
 	4,5,6,7
+
+The root in the drawed panel will have button-children you can use to expand the tree. Format of the input to each button is the same used to draw the root
   
 

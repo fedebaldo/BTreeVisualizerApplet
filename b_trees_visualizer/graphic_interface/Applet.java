@@ -19,7 +19,8 @@ public static int fontSize = defaultFontSize;
 
 public void init() {
 
-    JFrame f = new JFrame(); /* screen dimension depending on the computer used */
+    JFrame f = new JFrame();
+    /* screen dimension depending on the computer used */
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     f.setSize((int) screenSize.getWidth(),(int) screenSize.getHeight());
     f.setLocationByPlatform(true);
@@ -35,8 +36,7 @@ public void init() {
     card1.add(pan, BorderLayout.CENTER);
     card1.add(man, BorderLayout.NORTH);
      /* exercise panel */
-    ExercisePanel exPanel = new ExercisePanel();
-    JPanel card2 = exPanel.getPane();
+    JPanel card2 = new ExercisePanel ();
 
     tab.addTab("Example",card1);
     tab.addTab("Exercise", card2);

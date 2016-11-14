@@ -65,6 +65,14 @@ public class BTree<E extends Comparable<? super E>> {
 
 	}
 
+	public boolean isIn (E key) {return stack.contains(key);}
+
+	public E peekRandomOne () {
+
+		int i = this.rand.nextInt(this.stack.size());
+		return (E) this.stack.remove(i);
+	}
+
 	/**
 	** @throws NullPointerException : if the BTree is empty
 	** there aren't previous configuration
@@ -288,5 +296,6 @@ public class BTree<E extends Comparable<? super E>> {
 	**/
 	public void emptyTree() {
 		root = new BTreeNode<E>();
+		this.stack = new Stack<Integer> ();
 	}
 }
