@@ -19,7 +19,6 @@ public class InsRem extends JPanel {
 
     super();
     this.setLayout(new GridBagLayout());
-
     this.tree = tree;
     this.rand = new Random(System.currentTimeMillis());
 
