@@ -6,7 +6,7 @@ My work is the prosecution of Davide Donato's project.
 
 To compile from bash:
 
-- javac javac $(find . -name "*.java")
+- javac $(find . -name "*.java")
 - appletviewer applet.html 
 
 The applet is divided in two parts. 
