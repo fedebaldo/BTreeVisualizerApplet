@@ -56,7 +56,7 @@ public class BTreeNode<E extends Comparable<? super E>> {
 		recentModifications = new ArrayList<Pair<Boolean, E>>();
 		previousModifications = new ArrayList<Pair<Boolean, E>>();
 
-		leaf = true;
+		leaf = false;
 		hasFocus = false;
 
 	}

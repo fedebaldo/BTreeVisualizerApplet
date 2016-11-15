@@ -12,6 +12,9 @@ import b_trees_visualizer.graphic_interface.custom_panels.ExercisePanel;
 
 public class Applet extends JApplet {
 
+public static int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
+public static int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
+
 public static StepsPanel stepsP;
 public static int defaultFontSize = Math.max(Toolkit.getDefaultToolkit().getScreenSize().width * 18/1920
                                ,Toolkit.getDefaultToolkit().getScreenSize().height * 18/1080);

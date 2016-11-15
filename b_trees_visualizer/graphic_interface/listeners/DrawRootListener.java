@@ -7,51 +7,49 @@ import b_trees_visualizer.graphic_interface.listeners.CheckTreeListener;
 
 import b_trees_visualizer.graphic_interface.custom_panels.BTreeScrollPanel;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import javax.swing.JTextField;
+import javax.swing.JPanel;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 import java.util.ArrayList;
 
-public class DrawerListener implements ActionListener {
+/** this class provide a listener to draw root button **/
 
-  private JPanel drawPan;
-  private CheckTreeListener c;
+public class DrawRootListener implements ActionListener {
+
+  private CheckTreeListener checkL;
   private JTextField keys;
   private ArrayList<Integer> data;
-  private BTreeScrollPanel bl;
+  private BTreeScrollPanel treePanel;
   private BTree<Integer> drawedTree;
   private boolean flag;
 
-
-  private int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
-  private int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
-
-
-  public DrawerListener (JTextField keys, BTreeScrollPanel bl, CheckTreeListener c) {
+  /* constructor*/
+  public DrawRootListener (JTextField keys, BTreeScrollPanel treePanel, CheckTreeListener checkL) {
 
     super();
-    this.bl = bl;
+    this.treePanel = treePanel;
     this.keys = keys;
     this.flag = false;
-    this.c = c;
+    this.checkL = checkL;
 
   }
 
   @Override
   public void actionPerformed (ActionEvent e) {
     try {
+
       this.data = Tools.parse(keys.getText());
       keys.setText("");
       this.drawedTree = new BTree<Integer> (data);
-      this.drawedTree.getRoot().setLeaf(false);
-      this.bl.changeTree(this.drawedTree, false, false);
-      this.bl.updateTreePanel(false,false);
+      this.treePanel.changeTree(this.drawedTree, false, false);
       this.flag = true;
-      c.update (this.bl);
+      checkL.update (this.treePanel);
     } catch (NumberFormatException m) {}
   }
 
   public boolean getFlag () {return this.flag;}
-  public BTreeScrollPanel getScrollPanel () {return this.bl;}
+  public BTreeScrollPanel getScrollPanel () {return this.treePanel;}
 }

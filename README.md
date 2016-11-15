@@ -6,7 +6,7 @@ My work is the prosecution of Davide Donato's project.
 
 To compile from bash:
 
-- javac b_trees_visualizer/graphic_interface/Applet.java
+- javac javac $(find . -name "*.java")
 - appletviewer applet.html 
 
 The applet is divided in two parts. 

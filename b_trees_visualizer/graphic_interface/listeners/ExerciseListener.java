@@ -2,8 +2,8 @@ package b_trees_visualizer.graphic_interface.listeners;
 
 import b_trees_visualizer.data_structure.BTree;
 import b_trees_visualizer.graphic_interface.custom_panels.BTreeScrollPanel;
-import b_trees_visualizer.graphic_interface.custom_panels.InsRem;
-import b_trees_visualizer.graphic_interface.custom_panels.Grade;
+import b_trees_visualizer.graphic_interface.custom_panels.labels.InsRem;
+import b_trees_visualizer.graphic_interface.custom_panels.labels.Grade;
 
 import javax.swing.*;
 import java.awt.*;
@@ -28,19 +28,19 @@ public class ExerciseListener implements ActionListener {
     this.gradeL = gradeL;
     this.grade = this.tree.getGrade();
     rand = new Random (System.currentTimeMillis());
+    
   }
 
   @Override
   public void actionPerformed (ActionEvent a) {
 
     this.grade = this.rand.nextInt(2) + 2;
-
+    this.tree.setGrade(this.grade);
     if (!this.treePanel.getTree().isEmpty()) {
       insRem.clear();
     }
 
     this.tree.emptyTree();
-    this.tree.setGrade(this.grade);
 
 
     for (int i = 0; i < 10; i++) {
