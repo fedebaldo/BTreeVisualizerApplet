@@ -33,11 +33,19 @@ public class CheckTreeListener implements ActionListener {
   @Override
   public void actionPerformed (ActionEvent e) {
 
-    if (Tools.checkBTrees(this.solTree, this.tree)) {
-      exercisePanel.update();
-      JOptionPane.showMessageDialog(new JFrame(), "Tre drawed tree is correct !");
+    if (!this.solTree.isEmpty() || !this.tree.isEmpty()) {
+
+      if (Tools.checkBTrees(this.solTree, this.tree)) {
+        exercisePanel.update();
+        JOptionPane.showMessageDialog(new JFrame(), "Tre drawed tree is correct !");
+      } else {
+        JOptionPane.showMessageDialog(new JFrame(), "The drawed tree is uncorrect: \n try again !");
+      }
+
     } else {
-      JOptionPane.showMessageDialog(new JFrame(), "The drawed tree is uncorrect: \n try again !");
+
+        JOptionPane.showMessageDialog(new JFrame(), "The B-Trees in the exercise must be non empty");
+
     }
   }
 }

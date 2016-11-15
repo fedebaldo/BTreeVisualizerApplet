@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class ChildDrawerListener implements ActionListener {
 
-  public BTree<Integer> tree;
+  private BTree<Integer> tree;
   private BTreeScrollPanel treePanel;
   private ArrayList<Integer> data;
   private ArrayList<Integer> path;

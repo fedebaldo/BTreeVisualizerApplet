@@ -40,7 +40,7 @@ public class DrawerListener implements ActionListener {
 
   @Override
   public void actionPerformed (ActionEvent e) {
-
+    try {
       this.data = Tools.parse(keys.getText());
       keys.setText("");
       this.drawedTree = new BTree<Integer> (data);
@@ -49,7 +49,7 @@ public class DrawerListener implements ActionListener {
       this.bl.updateTreePanel(false,false);
       this.flag = true;
       c.update (this.bl);
-
+    } catch (NumberFormatException m) {}
   }
 
   public boolean getFlag () {return this.flag;}

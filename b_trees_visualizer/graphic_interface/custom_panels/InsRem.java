@@ -62,10 +62,10 @@ public class InsRem extends JPanel {
   }
 
   public void clear() {
-
-    this.remove(this.elem);
-    this.remove(this.action);
-
+    try {
+      this.remove(this.elem);
+      this.remove(this.action);
+    } catch (NullPointerException e) {}
   }
 
   public BTree<Integer> getTree() {return this.tree;}

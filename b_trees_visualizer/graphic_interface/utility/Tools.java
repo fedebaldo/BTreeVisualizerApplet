@@ -44,7 +44,14 @@ public class Tools {
     return correct;
   }
 
-  public static ArrayList<Integer> parse (String keys) {
+  public static ArrayList<Integer> parse (String keys) throws NumberFormatException {
+
+    if (keys.equals("")) {
+
+      throw new NumberFormatException ();
+
+    }
+
 
    ArrayList<Integer> k = new ArrayList<Integer> ();
    String el ="";
