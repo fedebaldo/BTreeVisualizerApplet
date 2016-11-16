@@ -36,14 +36,14 @@ public class ExercisePanel extends JPanel{
     */
     JPanel drawPanel = new JPanel ();
     drawPanel.setLayout(new BorderLayout());
-    drawPanel.setPreferredSize(new Dimension (Applet.screenWidth*1/2, Applet.screenHeight));
+    drawPanel.setPreferredSize(new Dimension (Applet.screenWidth*4/7, Applet.screenHeight));
     this.tree = new BTree<Integer> (2);
-    this.treePanel = new BTreeScrollPanel (this.tree, new Dimension(Applet.screenWidth*8/20, Applet.screenHeight));
+    this.treePanel = new BTreeScrollPanel (this.tree, new Dimension(Applet.screenWidth*14/30, Applet.screenHeight));
     /*
     * command panel
     */
     JPanel manPanel =  new JPanel();
-    manPanel.setLayout(new GridLayout(3,1,0,1));
+    manPanel.setLayout(new GridLayout(1,3,0,1));
     manPanel.setPreferredSize(new Dimension(Applet.screenWidth*1/10, Applet.screenHeight));
     DrawCheckRoot drawRoot = new DrawCheckRoot (this.treePanel, newExercisePanel);
     manPanel.add(drawRoot);

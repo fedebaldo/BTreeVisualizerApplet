@@ -35,12 +35,12 @@ public class NewExercisePanel extends JPanel {
     Random rand = new Random(System.currentTimeMillis());
     this.grade = rand.nextInt(2) + 2;
     this.tree = new BTree<Integer> (this.grade);
-    this.setPreferredSize(new Dimension (Applet.screenWidth*209/430, Applet.screenHeight));
+    this.setPreferredSize(new Dimension (Applet.screenWidth*204/500, Applet.screenHeight));
     /* panel with BTree exercise*/
-    this.treePanel = new BTreeScrollPanel(this.tree, new Dimension(Applet.screenWidth*159/430, Applet.screenHeight));
+    this.treePanel = new BTreeScrollPanel(this.tree, new Dimension(Applet.screenWidth*204/500, Applet.screenHeight*5/7));
     /* new exercise comands*/
-    JPanel manager = new JPanel (new GridLayout(5,1,0,0));
-    manager.setPreferredSize(new Dimension(Applet.screenWidth*1/10, Applet.screenHeight));
+    JPanel manager = new JPanel (new GridLayout(1,5,0,0));
+    manager.setPreferredSize(new Dimension(Applet.screenWidth*2/5, Applet.screenHeight*1/10));
     this.ins_rem = new InsRem ((BTree<Integer>) this.treePanel.getTree());
     this.grad = new Grade((BTree<Integer>) this.treePanel.getTree());
     JButton newEx = new JButton ("New Exercise");
@@ -49,8 +49,8 @@ public class NewExercisePanel extends JPanel {
     manager.add(newEx);
     manager.add(this.ins_rem);
 
-    this.add(manager, BorderLayout.WEST);
-    this.add(treePanel, BorderLayout.EAST);
+    this.add(manager, BorderLayout.NORTH);
+    this.add(treePanel, BorderLayout.SOUTH);
 
   }
 
