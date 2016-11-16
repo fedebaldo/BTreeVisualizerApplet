@@ -12,7 +12,7 @@ public class Tools {
   ** @return true if tree1 == tree2
   **/
   public static boolean checkBTrees (BTree<Integer> tree1, BTree<Integer> tree2) {
-
+    System.out.println (tree1.getGrade());
     return checkBTreesFromRoot (tree1.getRoot(), tree2.getRoot());
 
   }
@@ -68,7 +68,7 @@ public class Tools {
         if (root1.getKey(i) == root2.getKey(i))
           return false;
       }
-    
+
       for (int i = 0; i < root1.getChildren().size(); i++) {
 
         if (!(correct = correct && checkBTreesFromRoot(root1.getChild(i), root2.getChild(i)))) {

@@ -20,4 +20,11 @@ For Example
 
 The root in the drawed panel will have button-children you can use to expand the tree. Format of the input to each button is the same used to draw the root
   
+To run the html file from your browser you have to change your java settings:
 
+- find java settings
+- select security field and allow java on your browser
+- than add to the exception list file:///"full-path-to"/applet.html
+
+The applet is working on firefox, still have problem in safari.
+chrome doesn't support java applet.
